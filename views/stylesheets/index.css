@@ -1,0 +1,73 @@
+.option {
+	color: white;
+	border: 1px dashed blue;
+	float: left;
+	display: inline;
+	margin-left: 45px;	
+	background-color:gray;
+	font-size: 15px;
+}
+
+#header {
+	color: blue;
+	font-size: 36px;
+}
+
+.story {
+	border: 1px solid red;
+	padding-bottom: 30px;
+}
+
+.eventstory {
+	margin-left: 20px;
+}
+
+#viewoptions {
+	border: 1px dotted green;
+	padding-bottom: 30px;
+}
+
+form {
+	border: 2px solid black;
+	padding-top: 10px;
+	padding-bottom: 10px;
+}
+
+.submit {
+	float: right;
+}
+
+.unsubmit {
+	float: right;
+}
+
+.buttons {
+	float: left;
+	margin-left: 50px;
+}
+
+#submit {
+	float: left;
+}
+
+div {
+	background-color: white;
+}
+
+#form {
+	text-align: center;
+}
+
+table {
+	margin: 0 auto;
+}
+
+#body {
+	border: 1px solid blue;
+	margin: 0 auto;
+}
+
+.personalname {
+	vertical-align: top;
+	font-size: 25px;
+}

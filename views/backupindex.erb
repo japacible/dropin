@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+
+    <title><%= @app.name %></title>
+    <link rel="stylesheet" href="stylesheets/screen.css" media="screen">
+	<link href="stylesheets/index.css" type="text/css" rel="stylesheet" /> 
+
+    <!-- These are Open Graph tags.  They add meta data to your  -->
+    <!-- site that facebook uses when your content is shared     -->
+    <!-- over facebook.  You should fill these tags in with      -->
+    <!-- your data.  To learn more about Open Graph, visit       -->
+    <!-- 'https://developers.facebook.com/docs/opengraph/'       -->
+    <meta property="og:title" content=""/>
+    <meta property="og:type" content=""/>
+    <meta property="og:url" content=""/>
+    <meta property="og:image" content=""/>
+    <meta property="og:site_name" content=""/>
+    <meta property="fb:app_id" content="<%= @app.id %>" />
+	
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.4/jquery.min.js" type="text/javascript"></script>
+    <script src="index.js" type="text/javascript"></script> 
+
+    <script>
+      function popup(pageURL, title,w,h) {
+        var left = (screen.width/2)-(w/2);
+        var top = (screen.height/2)-(h/2);
+        var targetWin = window.open(
+          pageURL,
+          title,
+          'toolbar=no, location=no, directories=no, status=no, menubar=no, scrollbars=no, resizable=no, copyhistory=no, width='+w+', height='+h+', top='+top+', left='+left
+          );
+      }
+    </script>
+    <!--[if IE]>
+      <script>
+        var tags = ['header', 'section'];
+        while(tags.length)
+          document.createElement(tags.pop());
+      </script>
+    <![endif]-->
+  </head>
+  <body>
+    <header id="get-started" class="clearfix">
+      <h1>Create a Drop-In!</h1>
+      <!--
+      <p id="picture" style="background-image: url(https://graph.facebook.com/me/picture?type=normal&access_token=<%= @client.access_token %>)"></p>
+      <div>
+        <h1>Welcome, <strong><%= @user.name %></strong></h1>
+        <p class="tagline">
+          This is your app
+          <a href="<%= @app.link %>"><%= @app.name %></a>
+        </p>
+        <div id="share-app">
+          <p>Share your app:</p>
+          <ul>
+            <li>
+              <a href="#" class="facebook-button" onclick="popup('<%= post_to_wall_url %>', 'Post to Wall', 580, 400);">
+                <span class="plus">Post to Wall</span>
+              </a>
+            </li>
+            <li>
+              <a href="#" class="facebook-button speech-bubble" onclick="popup('<%= send_to_friends_url %>', 'Send', 580, 400);">
+                <span class="speech-bubble">Send to Friends</span>
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+      -->
+    </header>
+		<section id="submission" class="clearfix">
+			<form name="create" method="get" target="dropin"><table><tbody>
+			  <tr class="dataRow">
+				<th class="label"><label for="event_name">What?</label></th>
+				<td class="data">
+				  <input type="text" id="event_name" name="event_name" />
+				</td>
+			  <tr class="dataRow">
+				<th class="label"><label for="event_location">Where?</label></th>
+				<td class="data">
+				  <input type="text" id="event_location" name="event_location" />
+				</td>
+			  </tr>
+			  <tr class="dataRow">
+				<th class="label"><label for="event_time">When? (HH:MM)</label></th>
+				<td class="data">
+				  <input type="text" id="event_start" size="5" maxlength="5" name="event_start" />
+				<label> to </label>
+				  <input type="text" id="event_end" size="5" maxlength="5" name="event_end" />
+				</td>
+			  </tr>
+			  <tr class="dataRow">
+				<th class="label"><label for="event_party">How many people?</label></th>
+				<td class="data">
+				  <input type="text" id="event_party" name="event_party" />
+				</td>
+			  </tr>
+			</tbody>
+			</table>
+			<input id="submit" type="submit" value="Drop-In!" />
+			</form>
+		</section>
+
+    <section class="clearfix">
+      <%= escape @other_posts.inspect %>
+    </section>
+
+    <section id="content" class="clearfix">
+	<div id="body">
+		<div id="viewoptions">
+			<input type="submit" class="buttons" id="newest" value="Newest" />
+			<input type="submit" class="buttons" id="soon" value="Happening Soon" />
+			<input type="submit" class="buttons" id="filling" value="Almost Full" />
+			<input type="submit" class="buttons" id="mine" value="My Drop-Ins" />
+		</div>
+		<div id="storiesNewest">
+			<p class="story">
+				<img class="profilepicture" src="http://goo.gl/8j84y" />
+				<span class="personalname">John Doe</span><br />
+				<span class="eventstory">
+					I will be bowling at the ACME bowling center in Seattle!
+					6:00 to 10:00PM.
+				</span>
+				<span class="numbers" id="one">5</span> slots available.
+				<input id="onesub" class="submit" type="submit" value="Drop-In!" />
+			</p>
+			<p class="story">
+				<img class="profilepicture" src="http://goo.gl/Sk6vs" />
+				<span class="personalname">Jeremy Wang</span><br />
+				<span class="eventstory">
+					I will be playing Pokemon HeartGold on NDS via Wifi!
+					2:00 to 4:00PM.
+				</span>
+				<span class="numbers" id="one">2</span> slots available.
+				<input id="onesub" class="submit" type="submit" value="Drop-In!" />
+			</p>
+			<p class="story">
+				<img class="profilepicture" src="http://goo.gl/p0Djm" />
+				<span class="personalname">Mario</span><br />
+				<span class="eventstory">
+					I will be collecting coins in the Mushroom Kingdom.
+					5:00 - 6:00PM.
+				</span>
+				<span class="numbers" id="one">5</span> slots available.
+				<input id="onesub" class="submit" type="submit" value="Drop-In!" />
+			</p>
+			<p class="story">
+				<img class="profilepicture" src="http://goo.gl/D87h7" />
+				<span class="personalname">David Choi</span><br />
+				<span class="eventstory">
+					I will be playing guitar live at the LA Fountain.
+					10:00 - 11:00AM Tomorrow.
+				</span>
+				<span class="numbers" id="one">50</span> slots available.
+				<input id="onesub" class="submit" type="submit" value="Drop-In!" />
+			</p>
+		</div>
+		<div id="storiesSoon" style="display:none">
+			<p class="story">
+				<img class="profilepicture" src="http://goo.gl/p0Djm" />
+				<span class="personalname">Mario</span><br />
+				<span class="eventstory">
+					I will be collecting coins in the Mushroom Kingdom.
+					5:00 - 6:00PM.
+				</span>
+				<span class="numbers" id="one">5</span> slots available.
+				<input id="onesub" class="submit" type="submit" value="Drop-In!" />
+			</p>
+		</div>
+		<div id="storiesFilling" style="display:none">
+			<p class="story">
+				<img class="profilepicture" src="http://goo.gl/oCCfL" />
+				<span class="personalname">Stanley Wang</span><br />
+				<span class="eventstory">
+					I will be playing tennis at the IMA Courts.
+					10:00 - 11:30AM Tomorrow.
+				</span>
+				<span class="numbers" id="one">1</span> slot available.
+				<input id="onesub" class="submit" type="submit" value="Drop-In!" />
+			</p>
+		</div>
+		<div id="storiesMine" style="display:none">
+			<p class="story">
+				<img class="profilepicture" src="http://goo.gl/itt8b" />
+				<span class="personalname">Elynn Lee</span><br />
+				<span class="eventstory">
+					I will be having a Google+ Hangout via Internet!
+					4:30 to 5:30PM.
+				</span>
+				<span class="numbers" id="one">5</span> slots available.
+				<input id="onesub" class="submit" type="submit" value="Drop-Out!" />
+			</p>
+			<p class="story">
+				<img class="profilepicture" src="http://goo.gl/PGnrb" />
+				<span class="personalname">Wilson Lee</span><br />
+				<span class="eventstory">
+					I will be playing Bang! in 002.
+					6:00 to 11:45PM.
+				</span>
+				<span class="numbers" id="one">5</span> slots available.
+				<input id="onesub" class="submit" type="submit" value="Drop-Out!" />
+			</p>
+			<p class="story">
+				<img class="profilepicture" src="http://goo.gl/lr5wJ" />
+				<span class="personalname">Jennifer Apacible</span><br />
+				<span class="eventstory">
+					I will be hosting a Counter Strike match on Steam.
+					9:00 - 11:00PM.
+				</span>
+				<span class="numbers" id="one">4</span> slots available.
+				<input id="onesub" class="submit" type="submit" value="Drop-Out!" />
+			</p>
+		</div>
+	</div>
+
+      <div id="friends-using-app" class="list">
+        <h3>Friends using this app</h3>
+        <ul class="friends">
+          <% @friends_using_app.each do |friend_result| %>
+            <li>
+              <a href="#" onclick="window.open('http://www.facebook.com/<%= friend_result['uid'] %>')">
+                <img src="<%= friend_result['pic_square'] %>" alt="<%= friend_result['name'] %>">
+                <%= friend_result['name'] %>
+              </a>
+            </li>
+          <% end %>
+        </ul>
+      </div>
+    </section>
+
+    <!--
+    <section id="guides" class="clearfix">
+      <h1>Learn More About Heroku &amp; Facebook Apps</h1>
+      <ul>
+        <li>
+          <a href="http://www.heroku.com/" class="icon heroku">Heroku</a>
+          <p>Learn more about <a href="http://www.heroku.com/">Heroku</a>, or read developer docs in the Heroku <a href="http://devcenter.heroku.com/">Dev Center</a>.</p>
+        </li>
+        <li>
+          <a href="#" class="icon websites">Websites</a>
+          <p>
+            Drive growth and engagement on your site with
+            Facebook Login and Social Plugins.
+          </p>
+        </li>
+        <li>
+          <a href="#" class="icon mobile-apps">Mobile Apps</a>
+          <p>
+            Integrate with our core experience by building apps
+            that operate within Facebook.
+          </p>
+        </li>
+        <li>
+          <a href="#" class="icon apps-on-facebook">Apps on Facebook</a>
+          <p>Let users find and connect to their friends in mobile apps and games.</p>
+        </li>
+      </ul>
+    </section>
+    -->
+  </body>
+</html>

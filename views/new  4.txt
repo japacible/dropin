@@ -1,0 +1,77 @@
+function load() {
+	alert("testing");
+	
+	
+	var posts = document.getElementById("stories");
+	var temp = document.createElement("p");
+	temp.class = "story";
+	var img = document.createElement("img");
+	img.src = "http://goo.gl/8j84y";
+	img.class = "profilepicture";
+	var name = document.createTextNode("John Doe");
+	name.class = "personalname";
+	var event = document.createTextNode("I will be coding in the ACM lounge in the Paul G Allen building from 9:00PM to 2:00AM.");
+	name.class = "eventstory";
+	var num = 5;
+	var party = num + " slots available.";
+	var submit = document.createElement("input");
+	submit.class="submit";
+	
+	temp.appendChild(img);
+	temp.appendChild(name);
+	temp.appendChild(event);
+	temp.appendChild(party);
+	temp.appendChild(submit);
+	posts.appendChild(temp);
+	
+	$("newest").onclick = newest;
+	$("soon").onclick = soon;
+	$("filling").onclick = filling;
+	$("mine").onclick = mine;
+	$("submit").onclick = submit;
+}
+
+function newest() {
+	var posts = $$(".stories");
+	var temp = document.createElement("p");
+	temp.class = "story";
+	var img = document.createElement("img");
+	img.src = "http://goo.gl/8j84y";
+	img.class = "profilepicture";
+	var name = document.createTextNode("John Doe");
+	name.class = "personalname";
+	var event = document.createTextNode("I will be coding in the ACM lounge in the Paul G Allen building from 9:00PM to 2:00AM.");
+	name.class = "eventstory";
+	var num = 5;
+	var party = num + " slots available.";
+	var submit = document.createElement("input");
+	submit.class="submit";
+	
+	temp.appendChild(img);
+	temp.appendChild(name);
+	temp.appendChild(event);
+	temp.appendChild(party);
+	temp.appendChild(submit);
+	posts.appendChild(temp);
+}
+
+function soon() {
+
+}
+
+function filling() {
+
+}
+
+function mine() {
+
+}
+
+
+
+
+
+
+function submit() {
+
+}
